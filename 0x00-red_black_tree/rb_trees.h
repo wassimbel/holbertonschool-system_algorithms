@@ -41,4 +41,13 @@ int rb_tree_is_valid(const rb_tree_t *tree);
 int check_bst(const rb_tree_t *tree);
 int check_color(const rb_tree_t *tree);
 int check_black_and_validate(const rb_tree_t *tree, size_t *black_left);
+rb_tree_t *rb_tree_insert(rb_tree_t **tree, int value);
+rb_tree_t *rb_insert(rb_tree_t **tree, int value);
+void fix_right_uncle(rb_tree_t **tree, rb_tree_t *node);
+void fix_left_uncle(rb_tree_t **tree, rb_tree_t *node);
+void left_rotate(rb_tree_t **tree, rb_tree_t *node);
+void right_rotate(rb_tree_t **tree, rb_tree_t *node);
+void rb_inserted(rb_tree_t **tree, rb_tree_t *node);
+
+
 #endif /* _RB_TREES_H_ */
