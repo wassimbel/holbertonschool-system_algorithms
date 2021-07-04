@@ -14,7 +14,7 @@ rb_tree_t *rb_tree_insert(rb_tree_t **tree, int value)
 	if (!tree)
 		return (NULL);
 	new_node = rb_insert(tree, value);
-	if (!new_tree)
+	if (!new_node)
 		return (NULL);
 	rb_inserted(tree, new_node);
 	return (new_node);
