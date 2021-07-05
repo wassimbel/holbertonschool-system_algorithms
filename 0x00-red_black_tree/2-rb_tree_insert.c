@@ -186,7 +186,7 @@ void right_rotate(rb_tree_t **tree, rb_tree_t *node)
 }
 
 /**
- * rb_inserted - rotate and recolor inserted nodes
+ * rb_fixed - rotate and recolor inserted nodes
  * @tree: double pointer to root node
  * @node: node to fix
  **/
