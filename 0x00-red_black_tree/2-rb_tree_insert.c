@@ -16,7 +16,7 @@ rb_tree_t *rb_tree_insert(rb_tree_t **tree, int value)
 	new_node = rb_insert(tree, value);
 	if (!new_node)
 		return (NULL);
-	rb_inserted(tree, new_node);
+	rb_fixed(tree, new_node);
 	return (new_node);
 }
 
@@ -62,9 +62,10 @@ rb_tree_t *rb_insert(rb_tree_t **tree, int value)
  * fix_right_uncle -  fixes the right uncle
  * @tree: double pointer to root node
  * @node: pointer to node where wrong color
+ * Return: pointer to fixed node
  */
 
-void fix_right_uncle(rb_tree_t **tree, rb_tree_t *node)
+rb_tree_t *fix_right_uncle(rb_tree_t **tree, rb_tree_t *node)
 {
 
 	if (node->parent->parent->right && node->parent->parent->right->color == RED)
@@ -85,15 +86,17 @@ void fix_right_uncle(rb_tree_t **tree, rb_tree_t *node)
 		node->parent->parent->color = RED;
 		right_rotate(tree, node->parent->parent);
 	}
+	return (node);
 }
 
 /**
  * fix_left_uncle -  fixes the left uncle
  * @tree: double pointer to root node
  * @node: pointer to node where wrong color
+ * Return: pointer to fixed node
  */
 
-void fix_left_uncle(rb_tree_t **tree, rb_tree_t *node)
+rb_tree_t *fix_left_uncle(rb_tree_t **tree, rb_tree_t *node)
 {
 
 	if (node->parent->parent->left && node->parent->parent->left->color == RED)
@@ -114,6 +117,7 @@ void fix_left_uncle(rb_tree_t **tree, rb_tree_t *node)
 		node->parent->parent->color = RED;
 		left_rotate(tree, node->parent->parent);
 	}
+	return (node);
 }
 
 /**
@@ -187,14 +191,14 @@ void right_rotate(rb_tree_t **tree, rb_tree_t *node)
  * @node: node to fix
  **/
 
-void rb_inserted(rb_tree_t **tree, rb_tree_t *node)
+void rb_fixed(rb_tree_t **tree, rb_tree_t *node)
 {
 	while (node->parent && node->parent->color == RED)
 	{
 		if (node->parent->parent && node->parent == node->parent->parent->left)
-			fix_right_uncle(tree, node);
+			node = fix_right_uncle(tree, node);
 		else
-			fix_left_uncle(tree, node);
+			node = fix_left_uncle(tree, node);
 
 	}
 	(*tree)->color = BLACK;
