@@ -30,13 +30,9 @@ vertex_t *graph_add_vertex(graph_t *graph, const char *str)
 		return (NULL);
 
 	new_vertex->content = strdup(str);
-	if (!new_vertex->content)
-	{
-		free(new_vertex);
-		return (NULL);
-	}
-	new_vertex->nb_edges = 0;
+	new_vertex->index = 0;
 	new_vertex->edges = NULL;
+	new_vertex->nb_edges = 0;
 	new_vertex->next = NULL;
 
 	if (!prev)
