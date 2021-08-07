@@ -1,6 +1,27 @@
 #include "graphs.h"
 
 /**
+ * check_edge - checks if edge between v_src and v_dest exists
+ * @v_src: pointer to src vertex
+ * @v_dest: pointer to dest vertex
+ * Return: returns 1 if edge exists otherwise 0
+ **/
+
+int check_edge(vertex_t *v_src, vertex_t *v_dest)
+{
+	edge_t *current = NULL;
+	current = v_src->edges;
+
+	while (current)
+	{
+		if (current->dest == v_dest)
+			return (1);
+		current = current->next;
+	}
+	return (0);
+}
+
+/**
  * vertex_pt - returns a pointer to vertex containing s
  * @graph: pointer to graph
  * @s: pointer to string
@@ -49,11 +70,13 @@ int add_edge(vertex_t *v_src, vertex_t *v_dest)
 	if (!v_src->edges)
 	{
 		v_src->edges = new_edge;
+		v_src->nb_edges += 1;
 		return (1);
 	}
 	else
 	{
 		current->next = new_edge;
+		v_src->nb_edges +=1;
 		return (1);
 	}
 	return (0);
@@ -81,18 +104,19 @@ int graph_add_edge(graph_t *graph, const char *src, const char *dest,
 	v_dest = vertex_pt(graph, dest);
 	if (type == BIDIRECTIONAL)
 	{
+		if (check_edge(v_src, v_dest) && check_edge(v_dest, v_src))
+			return (1);
 		if (!add_edge(v_src, v_dest))
 			return (0);
 		if (!add_edge(v_dest, v_src))
 			return (0);
-		v_src->nb_edges += 1;
-		v_dest->nb_edges += 1;
 	}
 	else
 	{
+		if (check_edge(v_src, v_dest))
+			return (1);
 		if (!add_edge(v_src, v_dest))
 			return (0);
-		v_src->nb_edges += 1;
 	}
 	return (1);
 }

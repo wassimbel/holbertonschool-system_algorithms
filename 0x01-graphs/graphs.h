@@ -72,5 +72,5 @@ void graph_display(const graph_t *graph);
 int graph_add_edge(graph_t *graph, const char *src, const char *dest, edge_type_t type);
 int add_edge(vertex_t *v_src, vertex_t *v_dest);
 vertex_t *vertex_pt(graph_t *graph, const char *s);
-
+int check_edge(vertex_t *v_src, vertex_t *v_dest);
 #endif /* _GRAPHS_H_ */
