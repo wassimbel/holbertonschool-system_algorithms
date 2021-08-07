@@ -10,6 +10,7 @@
 int check_edge(vertex_t *v_src, vertex_t *v_dest)
 {
 	edge_t *current = NULL;
+
 	current = v_src->edges;
 
 	while (current)
@@ -76,7 +77,7 @@ int add_edge(vertex_t *v_src, vertex_t *v_dest)
 	else
 	{
 		current->next = new_edge;
-		v_src->nb_edges +=1;
+		v_src->nb_edges += 1;
 		return (1);
 	}
 	return (0);
