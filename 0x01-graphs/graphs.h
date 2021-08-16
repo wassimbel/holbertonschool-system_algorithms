@@ -74,4 +74,5 @@ int graph_add_edge(graph_t *graph, const char *src, const char *dest,
 int add_edge(vertex_t *v_src, vertex_t *v_dest);
 vertex_t *vertex_pt(graph_t *graph, const char *s);
 int check_edge(vertex_t *v_src, vertex_t *v_dest);
+void graph_delete(graph_t *graph);
 #endif /* _GRAPHS_H_ */
