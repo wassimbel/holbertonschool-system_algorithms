@@ -11,6 +11,9 @@ int check_edge(vertex_t *v_src, vertex_t *v_dest)
 {
 	edge_t *current = NULL;
 
+	if (!v_src || v_dest)
+		return (0);
+
 	current = v_src->edges;
 
 	while (current)
@@ -33,6 +36,9 @@ vertex_t *vertex_pt(graph_t *graph, const char *s)
 {
 	vertex_t *current;
 
+	if (!graph || !s)
+		return (NULL);
+
 	current = graph->vertices;
 
 	while (current)
@@ -54,6 +60,9 @@ vertex_t *vertex_pt(graph_t *graph, const char *s)
 int add_edge(vertex_t *v_src, vertex_t *v_dest)
 {
 	edge_t *current, *new_edge;
+
+	if (!v_src || !v_dest)
+		return (0);
 
 	current = v_src->edges;
 
