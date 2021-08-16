@@ -8,7 +8,7 @@
 void graph_delete(graph_t *graph)
 {
 	vertex_t *current, *next = NULL;
-	edge_t *edge, *cur_edge = NULL;
+	edge_t *edge = NULL, *cur_edge = NULL;
 
 	current = graph->vertices;
 
