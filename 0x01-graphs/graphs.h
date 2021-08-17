@@ -75,4 +75,11 @@ int add_edge(vertex_t *v_src, vertex_t *v_dest);
 vertex_t *vertex_pt(graph_t *graph, const char *s);
 int check_edge(vertex_t *v_src, vertex_t *v_dest);
 void graph_delete(graph_t *graph);
+
+size_t depth_first_traverse(const graph_t *graph,
+			void (*action)(const vertex_t *v, size_t depth));
+
+void dfs(vertex_t *vertex,
+	void (*action)(const vertex_t *v, size_t depth),
+	size_t depth, size_t *max_depth, int *seen);
 #endif /* _GRAPHS_H_ */
