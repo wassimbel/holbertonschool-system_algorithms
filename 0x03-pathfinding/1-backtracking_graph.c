@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+queue_t *backtrack(queue_t *path, vertex_t const *start,
+			const vertex_t *target, char *visited);
 /**
  * backtracking_graph -  searches for the shortest path from a starting point
  *  to a target point in a graph.
