@@ -1,5 +1,12 @@
 #include "nary_trees.h"
 
+/**
+ * nary_tree_insert -  inserts a node in a N-ary tree.
+ * @parent: pointer to the parent node
+ * @str: the string to be sorted in the created node
+ * Return: returns a pointer to the created node or NULL on failure
+ **/
+
 nary_tree_t *nary_tree_insert(nary_tree_t *parent, char const *str)
 {
 	nary_tree_t *new_node;
